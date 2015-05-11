@@ -12,7 +12,7 @@ filters registered to the ``User`` model, as well as IP address (using RequestCo
 
 	from gargoyle.decorators import switch_is_active
 
-	@switch_is_active('my switch name')
+	@switch_is_active('my_switch_name')
 	def my_view(request):
 	    return 'foo'
 
@@ -20,10 +20,10 @@ In the case of the switch being inactive and you are using the decorator, a 404 
 the user to an absolute URL (relative to domain), or a named URL pattern::
 
 	# if redirect_to starts with a /, we assume it's a url path
-	@switch_is_active('my switch name', redirect_to='/my/url/path)
+	@switch_is_active('my_switch_name', redirect_to='/my/url/path)
 
 	# alternatively use the url mapper
-	@switch_is_active('my switch name', redirect_to='access_denied')
+	@switch_is_active('my_switch_name', redirect_to='access_denied')
 
 gargoyle.is_active
 ~~~~~~~~~~~~~~~~~~
@@ -34,7 +34,7 @@ to perform validation on your own custom objects::
 	from gargoyle import gargoyle
 
 	def my_function(request):
-	    if gargoyle.is_active('my switch name', request):
+	    if gargoyle.is_active('my_switch_name', request):
 	        return 'foo'
 	    else:
 	        return 'bar'
@@ -43,7 +43,7 @@ to perform validation on your own custom objects::
 	from gargoyle import gargoyle
 
 	def my_method(user):
-	    if gargoyle.is_active('my switch name', user):
+	    if gargoyle.is_active('my_switch_name', user):
 	        return 'foo'
 	    else:
 	        return 'bar'
@@ -63,7 +63,7 @@ If you prefer to use templatetags, Gargoyle provides a helper called ``ifswitch`
 
 ``ifswitch`` can also be used with custom objects, like the ``gargoyle.is_active`` method::
 
-	{% ifswitch "my switch name" user %}
+	{% ifswitch "my_switch_name" user %}
 	    "my switch name" is active!
 	{% endifswitch %}
 
